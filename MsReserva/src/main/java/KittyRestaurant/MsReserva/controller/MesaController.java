@@ -1,5 +1,6 @@
 package KittyRestaurant.MsReserva.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,23 @@ public ResponseEntity<MesaModel> getById(@PathVariable int id) {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
+
+@GetMapping("/findAll")
+public ResponseEntity<List<MesaModel>> findAll() {
+    try {
+        List<MesaModel> mesa = mesaService.findAll();
+
+        if (!mesa.isEmpty()) {
+            return new ResponseEntity<>(mesa, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    } catch (Exception e) {
+        e.printStackTrace(); 
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
 
     
 }

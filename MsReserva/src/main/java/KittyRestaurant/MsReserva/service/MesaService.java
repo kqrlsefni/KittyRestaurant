@@ -1,5 +1,6 @@
 package KittyRestaurant.MsReserva.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,14 @@ public class MesaService {
             return null;
         }}
 
+    public List<MesaModel> findAll() {
+        try{
+            return (List<MesaModel>) mesaRepository.findAll();
+    }catch (Exception e) {
+            e.printStackTrace(); 
+            return null;
+        }
+            
+        }
+    
     }
