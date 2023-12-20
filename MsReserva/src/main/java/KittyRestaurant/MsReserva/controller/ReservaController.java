@@ -123,34 +123,34 @@ public class ReservaController {
             ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
         response.setStatus(false);
         response.setHttpStatusCode("500");
-        response.setMessage("Ocurrio un al error al registrar");
+        response.setMessage("Ocurrio un al error al actualizar");
         return new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
         }
         
     }
 
-    // @PostMapping("/update")
-    // public ResponseEntity<ResponseFormat> update(@RequestBody ReservaRequest reserva){
-    //     ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
-    //     response.setStatus(true);
-    //     response.setHttpStatusCode("200");
-    //     response.setMessage("peticion correcta");
+    @PostMapping("/update")
+    public ResponseEntity<ResponseFormat> update(@RequestBody ReservaRequest reserva){
+        ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
+        response.setStatus(true);
+        response.setHttpStatusCode("200");
+        response.setMessage("peticion correcta");
         
-    //     ReservaModel model = ReservaMapper.INSTANCE.ReserservaRequestlToReservaModel(reserva);
-    //     Iterable<ReservaDTO> reservas = Optional.of(reservaService.update(model)).stream().map(
-    //         ReservaModel -> new ReservaDTO(
-    //             ReservaModel.idReserva,
-    //             ReservaModel.cantidadPersona,
-    //             ReservaModel.fechaHora,
-    //             ReservaModel.descripcion,
-    //             ReservaModel.estado,
-    //             ReservaModel.numeroContacto,
-    //             ReservaModel.nombreContacto
-    //         )
-    //     ).collect(Collectors.toList());
-    //     response.setData(reservas);
-    //     return new ResponseEntity<>(response,HttpStatus.OK);
-    // }
+        ReservaModel model = ReservaMapper.INSTANCE.ReserservaRequestlToReservaModel(reserva);
+        Iterable<ReservaDTO> reservas = Optional.of(reservaService.update(model)).stream().map(
+            ReservaModel -> new ReservaDTO(
+                ReservaModel.idReserva,
+                ReservaModel.cantidadPersona,
+                ReservaModel.fechaHora,
+                ReservaModel.descripcion,
+                ReservaModel.estado,
+                ReservaModel.numeroContacto,
+                ReservaModel.nombreContacto
+            )
+        ).collect(Collectors.toList());
+        response.setData(reservas);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<ResponseFormat> delete(@PathVariable int id) {

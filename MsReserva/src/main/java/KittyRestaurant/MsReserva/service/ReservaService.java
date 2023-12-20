@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import KittyRestaurant.MsReserva.model.ReservaModel;
 import KittyRestaurant.MsReserva.repository.IReservaRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ReservaService {
@@ -26,14 +27,20 @@ public class ReservaService {
          return reservaRepository.save(model);
     }
 
-//     public ReservaModel update(ReservaModel model){
-//         Optional<ReservaModel> fmodelo = reservaRepository.findById(model.idReserva).map(
-//             model -> new ReservaModel(
+    public ReservaModel update(ReservaModel model){
+        return reservaRepository.findById(model.idReserva)
+        .map(existingModel -> {
+            existingModel.setCantidadPersona(model.cantidadPersona);
+            existingModel.setFechaHora(model.fechaHora);
+            existingModel.setDescripcion(model.descripcion);
+            existingModel.setEstado(model.estado);
+            existingModel.setNumeroContacto(model.numeroContacto);
+            existingModel.setNombreContacto(model.nombreContacto);
+            return reservaRepository.save(existingModel);
+        })
+        .orElseThrow(() -> new EntityNotFoundException("No se encontró la reserva con ID: " + model.idReserva));
+   }
 
-//             ) 
-//         );
-//         return reservaRepository.save(model);
-//    }
    public boolean delete(int id){
     try {
         Optional<ReservaModel> m = reservaRepository.findById(id);
