@@ -5,9 +5,7 @@ import KittyRestaurant.MsReserva.dto.ReservaDTO;
 import KittyRestaurant.MsReserva.dto.ReservaRequest;
 import KittyRestaurant.MsReserva.dto.ReservaResponse;
 import KittyRestaurant.MsReserva.dto.ResponseFormat;
-import KittyRestaurant.MsReserva.mapper.ReservaDTOMapper;
 import KittyRestaurant.MsReserva.mapper.ReservaMapper;
-import KittyRestaurant.MsReserva.mapper.ReservaRquestMapper;
 import KittyRestaurant.MsReserva.model.ReservaModel;
 import KittyRestaurant.MsReserva.service.ReservaService;
 import java.util.List;
@@ -22,7 +20,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/api/reserva")
@@ -30,11 +27,8 @@ public class ReservaController {
     
     @Autowired
     ReservaService reservaService;
-    ReservaRquestMapper reservaRquestMapper;
-    ReservaDTOMapper reservaDTOMapper;
     
     @GetMapping("/getAll")
-    @ResponseBody
     public ResponseEntity<ResponseFormat> getAll() {
         
         try {
