@@ -57,5 +57,32 @@ public class MesaService {
         return false;
     }
 }
+
+public MesaModel update(MesaModel mesa) {
+    try {
+        Optional<MesaModel> mesaExistente = mesaRepository.findById(mesa.getId_mesa());
+
+        if (mesaExistente.isPresent()) {
+            MesaModel mesaActualizado = mesaExistente.get();
+            mesaActualizado.setCapacidad(mesa.getCapacidad());
+            mesaActualizado.setEstado(mesa.getEstado());
+            mesaActualizado.setFechacreacion(mesa.getFechacreacion());
+            mesaActualizado.setUsuariocreacion(mesa.usuario_creacion);
+            mesaActualizado.setFechaultimamodficacion(mesa.getFechaultimamodificacion());
+            mesaActualizado.setUsuarioultimamodficacion(mesa.getUsuarioultimamodificacion());
+            mesaActualizado.setIdsede(mesa.getId_sede());
+
+            return mesaRepository.save(mesaActualizado);
+        } else {
+            
+            throw new IllegalArgumentException("La mesa con ID " + mesa.getId_mesa() + " no existe");
+        }
+    } catch (Exception e) {
+        
+        e.printStackTrace(); 
+        return null; 
+    }
+}
+
     
     }

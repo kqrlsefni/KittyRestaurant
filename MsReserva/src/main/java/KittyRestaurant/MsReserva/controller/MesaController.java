@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -84,6 +85,24 @@ public String deleteById(@PathVariable("id") int id) {
         return "Hubo un error al intentar eliminar el usuario con id " + id;
     }
 }
+
+@PutMapping("/update")
+public ResponseEntity<MesaModel> updateMesa(@RequestBody MesaModel mesa) {
+    try {
+        MesaModel mesaActualizado = mesaService.update(mesa);
+
+        if (mesaActualizado != null) {
+            return new ResponseEntity<>(mesaActualizado, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    } catch (Exception e) {
+        
+        e.printStackTrace(); 
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
 
 
 
