@@ -1,23 +1,21 @@
 package KittyRestaurant.MsReserva.dto;
 
-import java.time.LocalDateTime;
-
 public class SedeRequest {
 private int idSede;
 private String nombre;
 private String direccion;
-private LocalDateTime fechaCreacion;
+private String fechaCreacion;
 private String usuarioCreacion;
-private LocalDateTime ultimaFechaModificacion;
+private String ultimaFechaModificacion;
 private String ultimoUsuarioModificacion;
 
 public SedeRequest(
 int idSede,
 String nombre,
 String direccion,
-LocalDateTime fechaCreacion,
+String fechaCreacion,
 String usuarioCreacion,
-LocalDateTime ultimaFechaModificacion,
+String ultimaFechaModificacion,
 String ultimoUsuarioModificacion)
 {
 
@@ -54,11 +52,11 @@ public void setDireccion(String direccion) {
 this.direccion = direccion;
 }
 
-public LocalDateTime getFechaCreacion() {
+public String getFechaCreacion() {
 return fechaCreacion;
 }
 
-public void setFechaCreacion(LocalDateTime fechaCreacion) {
+public void setFechaCreacion(String fechaCreacion) {
 this.fechaCreacion = fechaCreacion;
 }
 
@@ -70,11 +68,11 @@ public void setUsuarioCreacion(String usuarioCreacion) {
 this.usuarioCreacion = usuarioCreacion;
 }
 
-public LocalDateTime getUltimaFechaModificacion() {
+public String getUltimaFechaModificacion() {
 return ultimaFechaModificacion;
 }
 
-public void setUltimaFechaModificacion(LocalDateTime ultimaFechaModificacion) {
+public void setUltimaFechaModificacion(String ultimaFechaModificacion) {
 this.ultimaFechaModificacion = ultimaFechaModificacion;
 }
 
