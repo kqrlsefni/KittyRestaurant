@@ -29,16 +29,16 @@ public class ReservaService {
 
     public ReservaModel update(ReservaModel model){
         return reservaRepository.findById(model.idReserva)
-        .map(existingModel -> {
-            existingModel.setCantidadPersona(model.cantidadPersona);
-            existingModel.setFechaHora(model.fechaHora);
-            existingModel.setDescripcion(model.descripcion);
-            existingModel.setEstado(model.estado);
-            existingModel.setNumeroContacto(model.numeroContacto);
-            existingModel.setNombreContacto(model.nombreContacto);
-            return reservaRepository.save(existingModel);
+        .map(antiguoModelo -> {
+            antiguoModelo.setCantidadPersona(model.cantidadPersona);
+            antiguoModelo.setFechaHora(model.fechaHora);
+            antiguoModelo.setDescripcion(model.descripcion);
+            antiguoModelo.setEstado(model.estado);
+            antiguoModelo.setNumeroContacto(model.numeroContacto);
+            antiguoModelo.setNombreContacto(model.nombreContacto);
+            return reservaRepository.save(antiguoModelo);
         })
-        .orElseThrow(() -> new EntityNotFoundException("No se encontró la reserva con ID: " + model.idReserva));
+        .orElseThrow();
    }
 
    public boolean delete(int id){

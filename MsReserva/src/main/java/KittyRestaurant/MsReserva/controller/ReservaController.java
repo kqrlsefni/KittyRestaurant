@@ -91,7 +91,7 @@ public class ReservaController {
             ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
             response.setStatus(false);
             response.setHttpStatusCode("400");
-            response.setMessage("No se encontro la reserva");
+            response.setMessage(e.getMessage());
             return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
         }
         
@@ -123,7 +123,7 @@ public class ReservaController {
             ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
         response.setStatus(false);
         response.setHttpStatusCode("500");
-        response.setMessage("Ocurrio un al error al actualizar");
+        response.setMessage("Ocurrio un al error al registrar");
         return new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
         }
         
@@ -131,7 +131,8 @@ public class ReservaController {
 
     @PostMapping("/update")
     public ResponseEntity<ResponseFormat> update(@RequestBody ReservaRequest reserva){
-        ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
+        try {
+            ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
         response.setStatus(true);
         response.setHttpStatusCode("200");
         response.setMessage("peticion correcta");
@@ -150,6 +151,14 @@ public class ReservaController {
         ).collect(Collectors.toList());
         response.setData(reservas);
         return new ResponseEntity<>(response,HttpStatus.OK);
+        } catch (Exception e) {
+            ReservaResponse<ReservaDTO> response = new ReservaResponse<>();
+        response.setStatus(false);
+        response.setHttpStatusCode("500");
+        response.setMessage("Ocurrio un al error al actualizar");
+        return new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
     }
 
     @DeleteMapping("/delete/{id}")
