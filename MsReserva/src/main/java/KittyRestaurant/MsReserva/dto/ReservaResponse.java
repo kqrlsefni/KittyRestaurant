@@ -1,17 +1,16 @@
 package KittyRestaurant.MsReserva.dto;
 
-public class ReservaResponse<T> extends ResponseFormat{
+import com.fasterxml.jackson.databind.JsonNode;
+
+public class ReservaResponse extends ResponseFormat{
     
-     private Iterable<T> data;
-    public Iterable<T> getData() {
+     private JsonNode data;
+
+    public JsonNode getData() {
         return data;
     }
-    public void setData(Iterable<T> data) {
+
+    public void setData(JsonNode data) {
         this.data = data;
-    }
-    
-    
-    
-     
-     
+    }  
 }
