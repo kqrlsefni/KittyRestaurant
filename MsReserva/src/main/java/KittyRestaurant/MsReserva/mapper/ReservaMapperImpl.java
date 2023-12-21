@@ -1,5 +1,8 @@
 package KittyRestaurant.MsReserva.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import KittyRestaurant.MsReserva.dto.ReservaDTO;
 import KittyRestaurant.MsReserva.dto.ReservaRequest;
 import KittyRestaurant.MsReserva.model.ReservaModel;
@@ -7,7 +10,7 @@ import KittyRestaurant.MsReserva.model.ReservaModel;
 public class ReservaMapperImpl implements ReservaMapper {
 
     @Override
-    public ReservaModel ReserservaRequestlToReservaModel(ReservaRequest req) {
+    public ReservaModel RequestToModel(ReservaRequest req) {
         if ( req == null ) {
             return null;
         }
@@ -28,7 +31,7 @@ public class ReservaMapperImpl implements ReservaMapper {
     }
 
     @Override
-    public ReservaDTO ReservaModelToReservaDTO(ReservaModel model) {
+    public ReservaDTO ModelToDto(ReservaModel model) {
         if ( model == null ) {
             return null;
         }
@@ -44,5 +47,41 @@ public class ReservaMapperImpl implements ReservaMapper {
        
         return rdto;
     }
-    
+
+    @Override
+    public ReservaRequest ModelToRequest(ReservaModel mod) {
+       if(mod == null){
+        return null;
+       }
+       ReservaRequest req = new ReservaRequest(
+            mod.idReserva,
+            mod.cantidadPersona,
+            mod.fechaHora,
+            mod.descripcion,
+            mod.estado,
+            mod.numeroContacto,
+            mod.nombreContacto,
+            mod.usuarioCreacion,
+            mod.fechaCreacion,
+            mod.usuarioUltimaModificacion,
+            mod.fechaUltimaModificacion,
+            mod.idMesa
+       );
+       return req;
+    }
+
+    @Override
+    public List<ReservaDTO> ListModelToListDto(List<ReservaModel> mod) {
+        if(mod == null){
+            return null;
+        }
+        List<ReservaDTO> list = new ArrayList<ReservaDTO>(mod.size());
+        for(ReservaModel m : mod){
+            list.add(ModelToDto(m));
+        }
+
+        return list;
+    }
+
+   
 }
