@@ -2,12 +2,10 @@ package KittyRestaurant.MsReserva.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import KittyRestaurant.MsReserva.model.ReservaModel;
 import KittyRestaurant.MsReserva.repository.IReservaRepository;
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ReservaService {
@@ -41,16 +39,16 @@ public class ReservaService {
         .orElseThrow();
    }
 
-   public boolean delete(int id){
+   public Optional<ReservaModel> delete(int id){
     try {
         Optional<ReservaModel> m = reservaRepository.findById(id);
         if(m.isEmpty()){
             throw new Exception();
         }
         reservaRepository.deleteById(id);
-        return true;
+        return m;
     } catch (Exception e) {
-        return false;
+        return null;
     }
    }
 }
