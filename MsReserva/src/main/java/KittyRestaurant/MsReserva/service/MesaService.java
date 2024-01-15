@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import KittyRestaurant.MsReserva.model.MesaModel;
@@ -44,17 +43,16 @@ public class MesaService {
             
         }
 
- public boolean deleteById(int id) {
+ public Optional<MesaModel> deleteById(int id) {
     try {
+        Optional<MesaModel> m = mesaRepository.findById(id);
+        if(m.isEmpty()){
+            throw new Exception();
+        }
         mesaRepository.deleteById(id);
-        return true;
-    } catch (EmptyResultDataAccessException e) {
-        
-        return false;
+        return m;
     } catch (Exception e) {
-        
-        e.printStackTrace(); 
-        return false;
+        return null;
     }
 }
 

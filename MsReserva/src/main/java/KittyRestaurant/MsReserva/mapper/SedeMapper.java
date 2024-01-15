@@ -7,7 +7,7 @@ import KittyRestaurant.MsReserva.dto.SedeDTO;
 import KittyRestaurant.MsReserva.dto.SedeRequest;
 import KittyRestaurant.MsReserva.model.SedeModel;
 
-    @Mapper
+@Mapper
 public interface SedeMapper{
 
     SedeMapper INSTANCE = Mappers.getMapper(SedeMapper.class);
