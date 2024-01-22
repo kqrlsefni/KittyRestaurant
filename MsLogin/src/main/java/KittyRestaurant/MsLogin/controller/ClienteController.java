@@ -55,10 +55,10 @@ public class ClienteController {
         boolean ok= this.clienteService.eliminarCliente(id);
         
         if(ok){
-            return "Se elimino la sede con id "+ id;
+            return "Se elimino el cliente con id "+ id;
 
         }else{
-            return "No se pudo eliminar la sede con id"+ id;
+            return "No se pudo eliminar el cliente con id"+ id;
         }
     }
     
