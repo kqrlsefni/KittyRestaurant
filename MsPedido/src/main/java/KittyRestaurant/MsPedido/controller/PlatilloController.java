@@ -32,6 +32,7 @@ public class PlatilloController {
     
 
     @GetMapping("/getAll")
+    @Cacheable("getAll")
     public ResponseEntity<ResponseFormat> getAll() {
         
         try {
@@ -57,6 +58,7 @@ public class PlatilloController {
     }
 
     @PostMapping("/create")
+    @Cacheable("create")
     public ResponseEntity<ResponseFormat> create(@RequestBody PlatilloRequest req){
         try {
             PlatilloResponse res = new PlatilloResponse();
