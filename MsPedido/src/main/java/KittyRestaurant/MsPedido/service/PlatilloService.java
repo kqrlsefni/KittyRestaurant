@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import KittyRestaurant.MsPedido.model.PlatilloModel;
 import KittyRestaurant.MsPedido.repository.IPlatilloRepository;
+import jakarta.persistence.Cacheable;
 
 @Service
 public class PlatilloService {
