@@ -1,4 +1,4 @@
-package KittyRestaurant.MsLogin.controller;
+package KittyRestaurant.MsPlatillo.controller;
 
 import java.util.Optional;
 
@@ -14,35 +14,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import KittyRestaurant.MsLogin.model.UsuarioModel;
-import KittyRestaurant.MsLogin.service.UsuarioService;
+import KittyRestaurant.MsPlatillo.model.PlatilloDiarioModel;
+import KittyRestaurant.MsPlatillo.service.PlatilloDiarioService;
 
 
 
 
 @RestController
-@RequestMapping("/api/usuario")
+@RequestMapping("/api/platillodiario")
 
-public class UsuarioController {
+public class PlatilloDiarioController {
 
     @Autowired
-    UsuarioService usuarioService;
+    PlatilloDiarioService platilloDiarioService;
 
     @PostMapping("/create")
-    public UsuarioModel create(@RequestBody UsuarioModel usuario) {
-                return usuarioService.create(usuario);
+    public PlatilloDiarioModel create(@RequestBody PlatilloDiarioModel platillodiario) {
+                return platilloDiarioService.create(platillodiario);
     }
     
     @GetMapping("getById/{id}")
-    public Optional<UsuarioModel> getById(@PathVariable int IdUsuario) {
-        return usuarioService.getById(IdUsuario);
+    public Optional<PlatilloDiarioModel> getById(@PathVariable int IdPlatilloDiario) {
+        return platilloDiarioService.getById(IdPlatilloDiario);
     }
 
     @PutMapping("update")
-    public ResponseEntity <UsuarioModel> updateUsuario(@RequestBody UsuarioModel usuario) {
-        UsuarioModel usuarioActualizado = usuarioService.update(usuario);
+    public ResponseEntity <PlatilloDiarioModel> updatePlatilloDiario(@RequestBody PlatilloDiarioModel platillodiario) {
+        PlatilloDiarioModel platilloDiarioActualizado = platilloDiarioService.update(platillodiario);
 
-        if(usuarioActualizado !=null){
+        if(platilloDiarioActualizado !=null){
             return new ResponseEntity<>(HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -51,13 +51,13 @@ public class UsuarioController {
 
     @DeleteMapping(path="/{id}")
     public String eliminarPorId(@PathVariable("id") int id){
-        boolean ok= this.usuarioService.eliminarUsuario(id);
+        boolean ok= this.platilloDiarioService.eliminarPlatilloDiario(id);
         
         if(ok){
-            return "Se elimino el usuario con id "+ id;
+            return "Se elimino el Platillo Diario con id "+ id;
 
         }else{
-            return "No se pudo eliminar el usuario con id"+ id;
+            return "No se pudo eliminar el Platillo Diario con id"+ id;
         }
     }
     

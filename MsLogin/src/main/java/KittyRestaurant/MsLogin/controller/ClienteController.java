@@ -40,7 +40,7 @@ public class ClienteController {
     }
 
     @PutMapping("update")
-    public ResponseEntity <ClienteModel> updateSede(@RequestBody ClienteModel cliente) {
+    public ResponseEntity <ClienteModel> updateCliente(@RequestBody ClienteModel cliente) {
         ClienteModel clienteActualizado = clienteService.update(cliente);
 
         if(clienteActualizado !=null){
