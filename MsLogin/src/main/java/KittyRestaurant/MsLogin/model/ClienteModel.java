@@ -26,6 +26,9 @@ public class ClienteModel {
     @Column(name="TipoDeDocumento")
     public String TipoDeDocumento;
 
+    @Column(name="NumeroDeDocumento")
+    public String NumeroDeDocumento;
+
     @Column(name="Correo")
     public String Correo;
 
@@ -71,6 +74,14 @@ public class ClienteModel {
 
     public void setTipoDeDocumento(String TipoDeDocumento){
         this.TipoDeDocumento = TipoDeDocumento;
+    }
+
+    public String getNumeroDeDocumento(){
+        return NumeroDeDocumento;
+    }
+
+    public void setNumeroDeDocumento(String NumeroDeDocumento){
+        this.NumeroDeDocumento = NumeroDeDocumento;
     }
 
     public String getCorreo(){
