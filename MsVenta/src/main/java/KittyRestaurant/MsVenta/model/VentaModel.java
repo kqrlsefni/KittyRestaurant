@@ -91,35 +91,35 @@ public class VentaModel {
         this.MedioDePago = MedioDePago;
     }
 
-    public String getFechaCreacionSede(){
+    public String getFechaCreacion(){
         return FechaCreacion;
     }
 
-    public void setFechaCreacionSede(String FechaCreacion){
+    public void setFechaCreacion(String FechaCreacion){
         this.FechaCreacion = FechaCreacion;
     }
 
-    public String getUsuarioCreacionSede(){
+    public String getUsuarioCreacion(){
         return UsuarioCreacion;
     }
 
-    public void setUsuarioCreacionSede(String UsuarioCreacion){
+    public void setUsuarioCreacion(String UsuarioCreacion){
         this.UsuarioCreacion = UsuarioCreacion;
     }
 
-    public String getUltimaFechaModificacionSede(){
+    public String getUltimaFechaModificacion(){
         return UltimaFechaModificacion;
     }
 
-    public void setUltimaFechaModificacionSede(String UltimaFechaModificacion){
+    public void setUltimaFechaModificacion(String UltimaFechaModificacion){
         this.UltimaFechaModificacion = UltimaFechaModificacion;
     }
 
-    public String getUltimoUsuarioModificacionSede(){
+    public String getUltimoUsuarioModificacion(){
         return UltimoUsuarioModificacion;
     }
 
-    public void setUltimoUsuarioModificacionSede(String UltimoUsuarioModificacion){
+    public void setUltimoUsuarioModificacion(String UltimoUsuarioModificacion){
         this.UltimoUsuarioModificacion = UltimoUsuarioModificacion;
     }
 }
