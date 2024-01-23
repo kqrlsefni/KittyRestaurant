@@ -13,11 +13,13 @@ public class PlatilloService {
     
     @Autowired
     IPlatilloRepository PlatilloRepository;
-
+    
+    @Cacheable("getAll")
      public List<PlatilloModel> getAll(){
         return (List<PlatilloModel>) PlatilloRepository.findAll();
     }
 
+    @Cacheable("create")
     public PlatilloModel create(PlatilloModel model){
         return PlatilloRepository.save(model);
    }
