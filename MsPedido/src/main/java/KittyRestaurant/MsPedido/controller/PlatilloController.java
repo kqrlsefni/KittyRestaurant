@@ -21,6 +21,7 @@ import KittyRestaurant.MsPedido.dto.ResponseFormat;
 import KittyRestaurant.MsPedido.mapper.PlatilloMapper;
 import KittyRestaurant.MsPedido.model.PlatilloModel;
 import KittyRestaurant.MsPedido.service.PlatilloService;
+import jakarta.persistence.Cacheable;
 
 @RestController
 @RequestMapping("/api/platillo")
