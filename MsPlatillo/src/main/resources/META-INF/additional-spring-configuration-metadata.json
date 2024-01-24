@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "postgres.datasource.jdbc-url",
+  "type": "java.lang.String",
+  "description": "A description for 'postgres.datasource.jdbc-url'"
+}]}
