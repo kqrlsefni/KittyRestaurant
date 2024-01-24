@@ -10,7 +10,6 @@ import KittyRestaurant.MsVenta.repository.IDetalleVentaRepository;
 
 @Service
 public class DetalleVentaService {
-
     @Autowired
     IDetalleVentaRepository detalleVentaRepository;
 
@@ -26,13 +25,13 @@ public class DetalleVentaService {
         Optional<DetalleVentaModel>DetalleVentaExistente =detalleVentaRepository.findById(detalleventa.getIdDetalleVenta());
 
         if(DetalleVentaExistente.isPresent()){
-            DetalleVentaModel detalleVentaActualizada = DetalleVentaExistente.get();
-            detalleVentaActualizada.setIdVenta(detalleventa.getIdVenta());
-            detalleVentaActualizada.setCantidad(detalleventa.getCantidad());
-            detalleVentaActualizada.setPrecio(detalleventa.getPrecio());
-            detalleVentaActualizada.setIdPedido(detalleventa.getIdPedido());
-            detalleVentaActualizada.setIdPlatilloDiario(detalleventa.getIdPlatilloDiario());
-            return detalleVentaRepository.save(detalleVentaActualizada);
+            DetalleVentaModel detalleVentaActualizado = DetalleVentaExistente.get();
+            detalleVentaActualizado.setIdVenta(detalleventa.getIdVenta());
+            detalleVentaActualizado.setCantidad(detalleventa.getCantidad());
+            detalleVentaActualizado.setPrecio(detalleventa.getPrecio());
+            detalleVentaActualizado.setIdPedido(detalleventa.getIdPedido());
+            detalleVentaActualizado.setIdPlatilloDiario(detalleventa.getIdPlatilloDiario());
+            return detalleVentaRepository.save(detalleVentaActualizado);
         }else{
             return null;
         }
